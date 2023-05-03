@@ -17,9 +17,31 @@ const App = () => {
     return <Loading />;
   }
 
+  const { question, incorrect_answers, correct_answer } = questions[index];
+  const answers = [...incorrect_answers, correct_answer];
+
   return (
     <main>
-      <h1>quiz app</h1>
+      <section className='quiz'>
+        <p className='correct-answers'>
+          correct answers: {correct}/{index}
+        </p>
+        <article className='container'>
+          <h2 dangerouslySetInnerHTML={{ __html: question }} />
+          <div className='btn-container'>
+            {answers.map((answer, index) => {
+              return (
+                <button
+                  key={index}
+                  className='answer-btn'
+                  dangerouslySetInnerHTML={{ __html: answer }}
+                />
+              );
+            })}
+          </div>
+        </article>
+        <button className='next-question'>next question</button>
+      </section>
     </main>
   );
 };
