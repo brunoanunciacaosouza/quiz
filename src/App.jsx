@@ -7,7 +7,8 @@ import Modal from './components/Modal';
 import './App.css';
 
 const App = () => {
-  const { waiting, loading, questions, index, correct } = useGlobalContext();
+  const { waiting, loading, questions, index, correct, nextQuestion } =
+    useGlobalContext();
 
   if (waiting) {
     return <SetupForm />;
@@ -40,7 +41,9 @@ const App = () => {
             })}
           </div>
         </article>
-        <button className='next-question'>next question</button>
+        <button type='button' className='next-question' onClick={nextQuestion}>
+          next question
+        </button>
       </section>
     </main>
   );
