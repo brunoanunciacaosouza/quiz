@@ -76,8 +76,12 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(false);
   };
 
-  const handleChange = (event) => {
-    console.log(event);
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setQuiz({
+      ...quiz,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (event) => {
