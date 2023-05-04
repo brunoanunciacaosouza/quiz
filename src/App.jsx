@@ -7,8 +7,15 @@ import Modal from './components/Modal';
 import './App.css';
 
 const App = () => {
-  const { waiting, loading, questions, index, correct, nextQuestion } =
-    useGlobalContext();
+  const {
+    waiting,
+    loading,
+    questions,
+    index,
+    correct,
+    nextQuestion,
+    checkAnswer,
+  } = useGlobalContext();
 
   if (waiting) {
     return <SetupForm />;
@@ -36,6 +43,7 @@ const App = () => {
                   key={index}
                   className='answer-btn'
                   dangerouslySetInnerHTML={{ __html: answer }}
+                  onClick={() => checkAnswer(correct_answer === answer)}
                 />
               );
             })}
