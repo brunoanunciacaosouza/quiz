@@ -3,9 +3,11 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const API_ENDPOINT = 'https://opentdb.com/api.php?';
 
-const url = '';
-const tempUrl =
-  'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple';
+const table = {
+  sports: 21,
+  history: 23,
+  politics: 24,
+};
 
 const AppContext = createContext();
 
@@ -85,12 +87,11 @@ const AppProvider = ({ children }) => {
   };
 
   const handleSubmit = (event) => {
-    console.log(event);
+    event.preventDefault();
+    const { amount, category, difficulty } = quiz;
+    const url = `${API_ENDPOINT}amount=${amount}&category=${table[category]}&difficulty=${difficulty}&type=multiple`;
+    fetchQuestions(url);
   };
-
-  useEffect(() => {
-    fetchQuestions(tempUrl);
-  }, []);
 
   return (
     <AppContext.Provider
