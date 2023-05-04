@@ -30,6 +30,7 @@ const App = () => {
 
   return (
     <main>
+      <Modal />
       <section className='quiz'>
         <p className='correct-answers'>
           correct answers: {correct}/{index}
